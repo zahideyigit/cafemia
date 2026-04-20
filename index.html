@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cafemia Menü</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Lato', sans-serif;
+    background: #0d0a07;
+    color: #f0ebe3;
+    min-height: 100vh;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 12px; left: 12px; right: 12px; bottom: 12px;
+    border: 1px solid rgba(212,175,55,0.25);
+    pointer-events: none;
+    z-index: 999;
+    border-radius: 4px;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    top: 18px; left: 18px; right: 18px; bottom: 18px;
+    border: 1px solid rgba(212,175,55,0.08);
+    pointer-events: none;
+    z-index: 999;
+    border-radius: 2px;
+  }
+
+  .corner-decor { position: fixed; width: 44px; height: 44px; z-index: 1000; pointer-events: none; }
+  .corner-decor.tl { top: 8px; left: 8px; border-top: 2px solid #d4af37; border-left: 2px solid #d4af37; }
+  .corner-decor.tr { top: 8px; right: 8px; border-top: 2px solid #d4af37; border-right: 2px solid #d4af37; }
+  .corner-decor.bl { bottom: 8px; left: 8px; border-bottom: 2px solid #d4af37; border-left: 2px solid #d4af37; }
+  .corner-decor.br { bottom: 8px; right: 8px; border-bottom: 2px solid #d4af37; border-right: 2px solid #d4af37; }
+
+  .header {
+    background: linear-gradient(180deg, #1a1208 0%, #0d0a07 100%);
+    text-align: center;
+    padding: 55px 20px 45px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      repeating-linear-gradient(90deg, transparent, transparent 80px, rgba(212,175,55,0.02) 80px, rgba(212,175,55,0.02) 81px),
+      repeating-linear-gradient(0deg, transparent, transparent 80px, rgba(212,175,55,0.02) 80px, rgba(212,175,55,0.02) 81px);
+  }
+
+  .header-logo-img {
+    width: 340px;
+    max-width: 80%;
+    position: relative;
+    z-index: 1;
+    mix-blend-mode: screen;
+    filter: drop-shadow(0 0 30px rgba(212,175,55,0.35)) brightness(1.05);
+    border-radius: 50%;
+  }
+
+  .header-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header-divider .line { width: 130px; height: 1px; background: linear-gradient(to right, transparent, #d4af37); }
+  .header-divider .line.right { background: linear-gradient(to left, transparent, #d4af37); }
+  .header-divider .diamond { width: 7px; height: 7px; border: 1.5px solid #d4af37; transform: rotate(45deg); background: transparent; }
+  .header-divider .diamond.big { width: 10px; height: 10px; border-color: #f5e27a; background: rgba(212,175,55,0.15); }
+
+  .menu-container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 50px 40px 80px;
+    display: grid;
+    gap: 24px;
+  }
+
+  .category {
+    background: #120f09;
+    border: 1px solid #2a2318;
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.6), inset 0 1px 0 rgba(212,175,55,0.05);
+  }
+
+  .category::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: -1px;
+    width: 22px; height: 22px;
+    border-top: 2px solid #d4af37;
+    border-left: 2px solid #d4af37;
+    z-index: 2;
+  }
+
+  .category::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; right: -1px;
+    width: 22px; height: 22px;
+    border-bottom: 2px solid #d4af37;
+    border-right: 2px solid #d4af37;
+    z-index: 2;
+  }
+
+  .category-header {
+    background: linear-gradient(90deg, #1c1610 0%, #181208 100%);
+    padding: 18px 28px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    position: relative;
+  }
+
+  .category-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(to right, #d4af37, rgba(212,175,55,0.2), transparent);
+  }
+
+  .category-header .emoji { font-size: 22px; }
+
+  .category-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #f5e27a 0%, #d4af37 50%, #b8860b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+  }
+
+  .category-header .cat-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, rgba(212,175,55,0.3), transparent);
+    margin-left: 8px;
+  }
+
+  .category-body { padding: 4px 0; }
+
+  .item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 13px 28px;
+    border-bottom: 1px solid #1c1810;
+    transition: all 0.2s ease;
+    position: relative;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .item-row {
+    display: flex;
+    width: 100%;
+    align-items: center;
+  }
+
+  .item::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 2px;
+    background: transparent;
+    transition: background 0.25s ease;
+  }
+
+  .item:hover::before { background: linear-gradient(to bottom, #d4af37, transparent); }
+  .item:hover { background: #161208; padding-left: 32px; }
+  .item:last-child { border-bottom: none; }
+
+  .item-name {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #e8dcc8;
+    letter-spacing: 0.6px;
+  }
+
+  .item-desc {
+    font-size: 11.5px;
+    color: #c9a84c;
+    font-weight: 400;
+    letter-spacing: 0.4px;
+    font-style: italic;
+    opacity: 0.85;
+  }
+
+  .item-dots {
+    flex: 1;
+    margin: 0 16px;
+    border-bottom: 1px dotted #2a2318;
+    height: 1px;
+    align-self: flex-end;
+    margin-bottom: 4px;
+  }
+
+  .item-price {
+    font-size: 14px;
+    font-weight: 700;
+    color: #d4af37;
+    white-space: nowrap;
+    min-width: 55px;
+    text-align: right;
+    letter-spacing: 1px;
+  }
+
+  .footer { text-align: center; padding: 30px; }
+
+  .footer-inner {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-weight: 700;
+    background: linear-gradient(135deg, #d4af37, #f5e27a, #d4af37);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .footer-inner .line {
+    width: 70px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #d4af37, transparent);
+    -webkit-text-fill-color: unset;
+  }
+
+  /* =====================
+     RESPONSIVE — Tablet
+     ===================== */
+  @media (max-width: 768px) {
+    body::before {
+      top: 8px; left: 8px; right: 8px; bottom: 8px;
+    }
+    body::after {
+      top: 13px; left: 13px; right: 13px; bottom: 13px;
+    }
+
+    .corner-decor { width: 32px; height: 32px; }
+
+    .header {
+      padding: 40px 16px 32px;
+    }
+
+    .header-logo-img {
+      width: 260px;
+    }
+
+    .header-divider .line { width: 80px; }
+
+    .menu-container {
+      padding: 32px 20px 60px;
+      gap: 18px;
+    }
+
+    .category-header {
+      padding: 14px 20px;
+      gap: 10px;
+    }
+
+    .category-header .emoji { font-size: 19px; }
+
+    .category-header h2 {
+      font-size: 13px;
+      letter-spacing: 3px;
+    }
+
+    .item {
+      padding: 11px 20px;
+    }
+
+    .item:hover { padding-left: 24px; }
+
+    .item-name { font-size: 13.5px; }
+    .item-desc { font-size: 11px; }
+    .item-price { font-size: 13px; min-width: 48px; }
+  }
+
+  /* =====================
+     RESPONSIVE — Mobile
+     ===================== */
+  @media (max-width: 480px) {
+    body::before {
+      top: 6px; left: 6px; right: 6px; bottom: 6px;
+    }
+    body::after {
+      top: 10px; left: 10px; right: 10px; bottom: 10px;
+    }
+
+    .corner-decor { width: 24px; height: 24px; }
+
+    .header {
+      padding: 32px 12px 26px;
+    }
+
+    .header-logo-img {
+      width: 200px;
+    }
+
+    .header-divider {
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .header-divider .line { width: 50px; }
+    .header-divider .diamond { width: 5px; height: 5px; }
+    .header-divider .diamond.big { width: 8px; height: 8px; }
+
+    .menu-container {
+      padding: 24px 12px 50px;
+      gap: 14px;
+    }
+
+    .category-header {
+      padding: 12px 16px;
+      gap: 8px;
+    }
+
+    .category-header .emoji { font-size: 17px; }
+
+    .category-header h2 {
+      font-size: 11.5px;
+      letter-spacing: 2px;
+    }
+
+    /* Küçük ekranlarda kategori başlığı taşarsa sar */
+    .category-header h2 {
+      white-space: normal;
+      line-height: 1.4;
+    }
+
+    .category-header .cat-line {
+      display: none;
+    }
+
+    .item {
+      padding: 10px 16px;
+      gap: 4px;
+    }
+
+    .item:hover { padding-left: 20px; }
+
+    .item-name {
+      font-size: 13px;
+      letter-spacing: 0.3px;
+    }
+
+    .item-desc {
+      font-size: 10.5px;
+      letter-spacing: 0.2px;
+    }
+
+    .item-dots {
+      margin: 0 10px;
+      margin-bottom: 4px;
+    }
+
+    .item-price {
+      font-size: 13px;
+      min-width: 40px;
+      letter-spacing: 0.5px;
+    }
+
+    .footer {
+      padding: 24px 16px;
+    }
+
+    .footer-inner {
+      gap: 10px;
+    }
+
+    .footer-inner .line {
+      width: 40px;
+    }
+  }
+
+  /* =====================
+     RESPONSIVE — Çok küçük (320px)
+     ===================== */
+  @media (max-width: 360px) {
+    .header-logo-img {
+      width: 160px;
+    }
+
+    .category-header h2 {
+      font-size: 10.5px;
+      letter-spacing: 1.5px;
+    }
+
+    .item-name { font-size: 12px; }
+    .item-price { font-size: 12px; min-width: 36px; }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="corner-decor tl"></div>
+<div class="corner-decor tr"></div>
+<div class="corner-decor bl"></div>
+<div class="corner-decor br"></div>
+
+<div class="header">
+  <img src="logo.png" alt="Cafemia Logo" class="header-logo-img">
+  <div class="header-divider">
+    <div class="line"></div>
+    <div class="diamond"></div>
+    <div class="diamond big"></div>
+    <div class="diamond"></div>
+    <div class="line right"></div>
+  </div>
+</div>
+
+<div class="menu-container">
+
+  <!-- APERATİFLER -->
+  <div class="category">
+    <div class="category-header"><span class="emoji">🍔</span><h2>Aperatifler</h2><div class="cat-line"></div></div>
+    <div class="category-body">
+      <div class="item">
+        <div class="item-row"><span class="item-name">Tost</span><span class="item-dots"></span><span class="item-price">₺</span></div>
+        <div class="item-desc">Sucuk, kaşar, domates, turşu, ketçap, mayonez</div>
+      </div>
+      <div class="item">
+        <div class="item-row"><span class="item-name">Burger</span><span class="item-dots"></span><span class="item-price">₺</span></div>
+        <div class="item-desc">Köfte, domates, turşu, ketçap, mayonez</div>
+      </div>
+      <div class="item">
+        <div class="item-row"><span class="item-name">Çiz Burger</span><span class="item-dots"></span><span class="item-price">₺</span></div>
+        <div class="item-desc">Köfte, cheddar, domates, turşu, ketçap, mayonez</div>
+      </div>
+      <div class="item">
+        <div class="item-row"><span class="item-name">Atıştırma Sepeti</span><span class="item-dots"></span><span class="item-price">₺</span></div>
+        <div class="item-desc">Patates kızartması, sosis, soğan halkası, nugget...</div>
+      </div>
+      <div class="item">
+        <div class="item-row"><span class="item-name">Patates Kızartması</span><span class="item-dots"></span><span class="item-price">₺</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MİLKSHAKE -->
+  <div class="category">
+    <div class="category-header"><span class="emoji">🥤</span><h2>Milkshake</h2><div class="cat-line"></div></div>
+    <div class="category-body">
+      <div class="item"><div class="item-row"><span class="item-name">Çilek</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Çikolata</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Karamel</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Vanilya</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Oreo</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Cici Bebe</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Çilek Cici Bebe</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Vanilya Cici Bebe</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+    </div>
+  </div>
+
+  <!-- FROZEN -->
+  <div class="category">
+    <div class="category-header"><span class="emoji">🧊</span><h2>Frozen</h2><div class="cat-line"></div></div>
+    <div class="category-body">
+      <div class="item"><div class="item-row"><span class="item-name">Karpuz</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Mango</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Kavun</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Orman Meyvesi</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+    </div>
+  </div>
+
+  <!-- MOCKTAILS -->
+  <div class="category">
+    <div class="category-header"><span class="emoji">🍹</span><h2>Mocktaıls</h2><div class="cat-line"></div></div>
+    <div class="category-body">
+      <div class="item"><div class="item-row"><span class="item-name">Berry Hibiscus</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Cool Lime</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Çilekli Limonata</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+    </div>
+  </div>
+
+  <!-- DÜNYA KAHVELERİ SICAK -->
+  <div class="category">
+    <div class="category-header"><span class="emoji">☕</span><h2>Dünya Kahveleri — Sıcak</h2><div class="cat-line"></div></div>
+    <div class="category-body">
+      <div class="item"><div class="item-row"><span class="item-name">Filtre Kahve</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Mocha</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Karamel Macchiato</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Nescafe</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Sütlü Filtre Kahve</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Americano</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Cappuccino</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Latte</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">White Chocolate Mocha</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Espresso</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+    </div>
+  </div>
+
+  <!-- DÜNYA KAHVELERİ SOĞUK -->
+  <div class="category">
+    <div class="category-header"><span class="emoji">🧊</span><h2>Dünya Kahveleri — Soğuk</h2><div class="cat-line"></div></div>
+    <div class="category-body">
+      <div class="item"><div class="item-row"><span class="item-name">Ice Latte</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Ice White Mocha</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Frappe</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Soğuk Filtre</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Ice Americano</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Ice Karamel Macchiato</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Ice Mocha</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+    </div>
+  </div>
+
+  <!-- SICAK İÇECEKLER -->
+  <div class="category">
+    <div class="category-header"><span class="emoji">🍵</span><h2>Sıcak İçecekler</h2><div class="cat-line"></div></div>
+    <div class="category-body">
+      <div class="item"><div class="item-row"><span class="item-name">Çay</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Fincan Çay</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Yeşil Çay</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Ada Çayı</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Kuşburnu</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Ihlamur</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Türk Kahvesi</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Dibek Kahvesi</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Salep</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Sıcak Çikolata</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+    </div>
+  </div>
+
+  <!-- SOĞUK İÇECEKLER -->
+  <div class="category">
+    <div class="category-header"><span class="emoji">🥤</span><h2>Soğuk İçecekler</h2><div class="cat-line"></div></div>
+    <div class="category-body">
+      <div class="item"><div class="item-row"><span class="item-name">Su</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Coca Cola</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Cappy</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Monster Enerji</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Soda</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Sprite</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Fanta</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Red Bull Enerji</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Meyveli Soda</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Dört Mevsim</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Ayran</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Limonata</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Fuse Tea</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Churchill</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Buzlu Bardak</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+    </div>
+  </div>
+
+  <!-- TADIM KURUYEMİŞ -->
+  <div class="category">
+    <div class="category-header"><span class="emoji">🥜</span><h2>Tadım Kuruyemiş</h2><div class="cat-line"></div></div>
+    <div class="category-body">
+      <div class="item"><div class="item-row"><span class="item-name">Ay Çekirdeği</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Antep Fıstığı</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Çifte Leblebi</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Badem</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Fındık</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Kaju</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Klasik</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Fıstık</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Cips</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Festival</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Kabak Çekirdeği</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+    </div>
+  </div>
+
+  <!-- DONDURMA -->
+  <div class="category">
+    <div class="category-header"><span class="emoji">🍦</span><h2>Dondurma</h2><div class="cat-line"></div></div>
+    <div class="category-body">
+      <div class="item">
+        <div class="item-row"><span class="item-name">Dondurma</span><span class="item-dots"></span><span class="item-price">₺</span></div>
+        <div class="item-desc">Sade, kakao, karamel, limon, vişne, karadut, mango, oreo, badem krokan, şirinler</div>
+      </div>
+      <div class="item">
+        <div class="item-row"><span class="item-name">Porsiyon Dondurma</span><span class="item-dots"></span><span class="item-price">₺</span></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-inner" style="font-size: 18px; letter-spacing: 8px; white-space: nowrap;">
+    <div class="line" style="width: 40px;"></div>
+    ✦ CAFE MİA ✦
+    <div class="line" style="width: 40px;"></div>
+  </div>
+  <div class="footer-inner" style="margin-top: 10px; white-space: nowrap;">
+    <div class="line" style="width: 40px;"></div>
+    ✦ AFİYET OLSUN ✦
+    <div class="line" style="width: 40px;"></div>
+  </div>
+</div>
+
+</body>
+</html>
