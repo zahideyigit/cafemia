@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cafemia Menü</title>
+<title>Cafe Mia Menü</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 
 <style>
@@ -250,170 +250,22 @@
     -webkit-text-fill-color: unset;
   }
 
-  /* =====================
-     RESPONSIVE — Tablet
-     ===================== */
   @media (max-width: 768px) {
-    body::before {
-      top: 8px; left: 8px; right: 8px; bottom: 8px;
-    }
-    body::after {
-      top: 13px; left: 13px; right: 13px; bottom: 13px;
-    }
-
-    .corner-decor { width: 32px; height: 32px; }
-
-    .header {
-      padding: 40px 16px 32px;
-    }
-
-    .header-logo-img {
-      width: 260px;
-    }
-
-    .header-divider .line { width: 80px; }
-
-    .menu-container {
-      padding: 32px 20px 60px;
-      gap: 18px;
-    }
-
-    .category-header {
-      padding: 14px 20px;
-      gap: 10px;
-    }
-
-    .category-header .emoji { font-size: 19px; }
-
-    .category-header h2 {
-      font-size: 13px;
-      letter-spacing: 3px;
-    }
-
-    .item {
-      padding: 11px 20px;
-    }
-
+    .menu-container { padding: 32px 20px 60px; gap: 18px; }
+    .category-header { padding: 14px 20px; }
+    .category-header h2 { font-size: 13px; letter-spacing: 3px; }
+    .item { padding: 11px 20px; }
     .item:hover { padding-left: 24px; }
-
-    .item-name { font-size: 13.5px; }
-    .item-desc { font-size: 11px; }
-    .item-price { font-size: 13px; min-width: 48px; }
   }
 
-  /* =====================
-     RESPONSIVE — Mobile
-     ===================== */
   @media (max-width: 480px) {
-    body::before {
-      top: 6px; left: 6px; right: 6px; bottom: 6px;
-    }
-    body::after {
-      top: 10px; left: 10px; right: 10px; bottom: 10px;
-    }
-
-    .corner-decor { width: 24px; height: 24px; }
-
-    .header {
-      padding: 32px 12px 26px;
-    }
-
-    .header-logo-img {
-      width: 200px;
-    }
-
-    .header-divider {
-      gap: 10px;
-      margin-top: 18px;
-    }
-
-    .header-divider .line { width: 50px; }
-    .header-divider .diamond { width: 5px; height: 5px; }
-    .header-divider .diamond.big { width: 8px; height: 8px; }
-
-    .menu-container {
-      padding: 24px 12px 50px;
-      gap: 14px;
-    }
-
-    .category-header {
-      padding: 12px 16px;
-      gap: 8px;
-    }
-
-    .category-header .emoji { font-size: 17px; }
-
-    .category-header h2 {
-      font-size: 11.5px;
-      letter-spacing: 2px;
-    }
-
-    /* Küçük ekranlarda kategori başlığı taşarsa sar */
-    .category-header h2 {
-      white-space: normal;
-      line-height: 1.4;
-    }
-
-    .category-header .cat-line {
-      display: none;
-    }
-
-    .item {
-      padding: 10px 16px;
-      gap: 4px;
-    }
-
+    .header-logo-img { width: 200px; }
+    .menu-container { padding: 24px 12px 50px; gap: 14px; }
+    .category-header { padding: 12px 16px; }
+    .category-header h2 { font-size: 11.5px; letter-spacing: 2px; white-space: normal; line-height: 1.4; }
+    .category-header .cat-line { display: none; }
+    .item { padding: 10px 16px; }
     .item:hover { padding-left: 20px; }
-
-    .item-name {
-      font-size: 13px;
-      letter-spacing: 0.3px;
-    }
-
-    .item-desc {
-      font-size: 10.5px;
-      letter-spacing: 0.2px;
-    }
-
-    .item-dots {
-      margin: 0 10px;
-      margin-bottom: 4px;
-    }
-
-    .item-price {
-      font-size: 13px;
-      min-width: 40px;
-      letter-spacing: 0.5px;
-    }
-
-    .footer {
-      padding: 24px 16px;
-    }
-
-    .footer-inner {
-      gap: 10px;
-    }
-
-    .footer-inner .line {
-      width: 40px;
-    }
-  }
-
-  /* =====================
-     RESPONSIVE — Çok küçük (320px)
-     ===================== */
-  @media (max-width: 360px) {
-    .header-logo-img {
-      width: 160px;
-    }
-
-    .category-header h2 {
-      font-size: 10.5px;
-      letter-spacing: 1.5px;
-    }
-
-    .item-name { font-size: 12px; }
-    .item-price { font-size: 12px; min-width: 36px; }
   }
 </style>
 </head>
@@ -426,7 +278,7 @@
 <div class="corner-decor br"></div>
 
 <div class="header">
-  <img src="logo.png" alt="Cafemia Logo" class="header-logo-img">
+  <img src="logo.png" alt="Cafe Mia Logo" class="header-logo-img">
   <div class="header-divider">
     <div class="line"></div>
     <div class="diamond"></div>
@@ -443,23 +295,23 @@
     <div class="category-header"><span class="emoji">🍔</span><h2>Aperatifler</h2><div class="cat-line"></div></div>
     <div class="category-body">
       <div class="item">
-        <div class="item-row"><span class="item-name">Tost</span><span class="item-dots"></span><span class="item-price">₺</span></div>
+        <div class="item-row"><span class="item-name">Tost</span><span class="item-dots"></span><span class="item-price">₺160</span></div>
         <div class="item-desc">Sucuk, kaşar, domates, turşu, ketçap, mayonez</div>
       </div>
       <div class="item">
-        <div class="item-row"><span class="item-name">Burger</span><span class="item-dots"></span><span class="item-price">₺</span></div>
+        <div class="item-row"><span class="item-name">Burger</span><span class="item-dots"></span><span class="item-price">₺300</span></div>
         <div class="item-desc">Köfte, domates, turşu, ketçap, mayonez</div>
       </div>
       <div class="item">
-        <div class="item-row"><span class="item-name">Çiz Burger</span><span class="item-dots"></span><span class="item-price">₺</span></div>
+        <div class="item-row"><span class="item-name">Çiz Burger</span><span class="item-dots"></span><span class="item-price">₺350</span></div>
         <div class="item-desc">Köfte, cheddar, domates, turşu, ketçap, mayonez</div>
       </div>
       <div class="item">
-        <div class="item-row"><span class="item-name">Atıştırma Sepeti</span><span class="item-dots"></span><span class="item-price">₺</span></div>
-        <div class="item-desc">Patates kızartması, sosis, soğan halkası, nugget...</div>
+        <div class="item-row"><span class="item-name">Atıştırma Sepeti</span><span class="item-dots"></span><span class="item-price">₺300</span></div>
+        <div class="item-desc">Patates kızartması, sosis, soğan halkası, nugget</div>
       </div>
       <div class="item">
-        <div class="item-row"><span class="item-name">Patates Kızartması</span><span class="item-dots"></span><span class="item-price">₺</span></div>
+        <div class="item-row"><span class="item-name">Patates Kızartması</span><span class="item-dots"></span><span class="item-price">₺250</span></div>
       </div>
     </div>
   </div>
@@ -468,14 +320,14 @@
   <div class="category">
     <div class="category-header"><span class="emoji">🥤</span><h2>Milkshake</h2><div class="cat-line"></div></div>
     <div class="category-body">
-      <div class="item"><div class="item-row"><span class="item-name">Çilek</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Çikolata</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Karamel</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Vanilya</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Oreo</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Cici Bebe</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Çilek Cici Bebe</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Vanilya Cici Bebe</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Çilek</span><span class="item-dots"></span><span class="item-price">₺200</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Çikolata</span><span class="item-dots"></span><span class="item-price">₺200</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Karamel</span><span class="item-dots"></span><span class="item-price">₺200</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Vanilya</span><span class="item-dots"></span><span class="item-price">₺200</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Oreo</span><span class="item-dots"></span><span class="item-price">₺200</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Cici Bebe</span><span class="item-dots"></span><span class="item-price">₺200</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Çilek Cici Bebe</span><span class="item-dots"></span><span class="item-price">₺200</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Vanilya Cici Bebe</span><span class="item-dots"></span><span class="item-price">₺200</span></div></div>
     </div>
   </div>
 
@@ -483,20 +335,20 @@
   <div class="category">
     <div class="category-header"><span class="emoji">🧊</span><h2>Frozen</h2><div class="cat-line"></div></div>
     <div class="category-body">
-      <div class="item"><div class="item-row"><span class="item-name">Karpuz</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Mango</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Kavun</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Orman Meyvesi</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Karpuz</span><span class="item-dots"></span><span class="item-price">₺200</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Mango</span><span class="item-dots"></span><span class="item-price">₺200</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Kavun</span><span class="item-dots"></span><span class="item-price">₺200</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Orman Meyvesi</span><span class="item-dots"></span><span class="item-price">₺200</span></div></div>
     </div>
   </div>
 
   <!-- MOCKTAILS -->
   <div class="category">
-    <div class="category-header"><span class="emoji">🍹</span><h2>Mocktaıls</h2><div class="cat-line"></div></div>
+    <div class="category-header"><span class="emoji">🍹</span><h2>Mocktails</h2><div class="cat-line"></div></div>
     <div class="category-body">
-      <div class="item"><div class="item-row"><span class="item-name">Berry Hibiscus</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Cool Lime</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Çilekli Limonata</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Berry Hibiscus</span><span class="item-dots"></span><span class="item-price">₺180</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Cool Lime</span><span class="item-dots"></span><span class="item-price">₺180</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Çilekli Limonata</span><span class="item-dots"></span><span class="item-price">₺150</span></div></div>
     </div>
   </div>
 
@@ -504,16 +356,16 @@
   <div class="category">
     <div class="category-header"><span class="emoji">☕</span><h2>Dünya Kahveleri — Sıcak</h2><div class="cat-line"></div></div>
     <div class="category-body">
-      <div class="item"><div class="item-row"><span class="item-name">Filtre Kahve</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Mocha</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Karamel Macchiato</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Nescafe</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Sütlü Filtre Kahve</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Americano</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Cappuccino</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Latte</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">White Chocolate Mocha</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Espresso</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Filtre Kahve</span><span class="item-dots"></span><span class="item-price">₺130</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Mocha</span><span class="item-dots"></span><span class="item-price">₺170</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Karamel Macchiato</span><span class="item-dots"></span><span class="item-price">₺180</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Nescafe</span><span class="item-dots"></span><span class="item-price">₺100</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Sütlü Filtre Kahve</span><span class="item-dots"></span><span class="item-price">₺140</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Americano</span><span class="item-dots"></span><span class="item-price">₺140</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Cappuccino</span><span class="item-dots"></span><span class="item-price">₺150</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Latte</span><span class="item-dots"></span><span class="item-price">₺140</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">White Chocolate Mocha</span><span class="item-dots"></span><span class="item-price">₺170</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Espresso</span><span class="item-dots"></span><span class="item-price">₺100</span></div></div>
     </div>
   </div>
 
@@ -521,13 +373,17 @@
   <div class="category">
     <div class="category-header"><span class="emoji">🧊</span><h2>Dünya Kahveleri — Soğuk</h2><div class="cat-line"></div></div>
     <div class="category-body">
-      <div class="item"><div class="item-row"><span class="item-name">Ice Latte</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Ice White Mocha</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Frappe</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Soğuk Filtre</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Ice Americano</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Ice Karamel Macchiato</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Ice Mocha</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Ice Latte</span><span class="item-dots"></span><span class="item-price">₺160</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Ice White Mocha</span><span class="item-dots"></span><span class="item-price">₺190</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Frappe</span><span class="item-dots"></span><span class="item-price">₺220</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Soğuk Filtre</span><span class="item-dots"></span><span class="item-price">₺160</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Ice Americano</span><span class="item-dots"></span><span class="item-price">₺160</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Ice Karamel Macchiato</span><span class="item-dots"></span><span class="item-price">₺200</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Ice Mocha</span><span class="item-dots"></span><span class="item-price">₺190</span></div></div>
+      <div class="item">
+        <div class="item-row"><span class="item-name">Aromalar</span><span class="item-dots"></span><span class="item-price">₺20</span></div>
+        <div class="item-desc">Vanilya, Karamel</div>
+      </div>
     </div>
   </div>
 
@@ -535,16 +391,16 @@
   <div class="category">
     <div class="category-header"><span class="emoji">🍵</span><h2>Sıcak İçecekler</h2><div class="cat-line"></div></div>
     <div class="category-body">
-      <div class="item"><div class="item-row"><span class="item-name">Çay</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Fincan Çay</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Yeşil Çay</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Ada Çayı</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Kuşburnu</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Ihlamur</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Türk Kahvesi</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Dibek Kahvesi</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Salep</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Sıcak Çikolata</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Çay</span><span class="item-dots"></span><span class="item-price">₺30</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Fincan Çay</span><span class="item-dots"></span><span class="item-price">₺50</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Yeşil Çay</span><span class="item-dots"></span><span class="item-price">₺120</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Ada Çayı</span><span class="item-dots"></span><span class="item-price">₺120</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Kuşburnu</span><span class="item-dots"></span><span class="item-price">₺120</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Ihlamur</span><span class="item-dots"></span><span class="item-price">₺120</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Türk Kahvesi</span><span class="item-dots"></span><span class="item-price">₺100</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Dibek Kahvesi</span><span class="item-dots"></span><span class="item-price">₺120</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Salep</span><span class="item-dots"></span><span class="item-price">₺160</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Sıcak Çikolata</span><span class="item-dots"></span><span class="item-price">₺160</span></div></div>
     </div>
   </div>
 
@@ -552,21 +408,23 @@
   <div class="category">
     <div class="category-header"><span class="emoji">🥤</span><h2>Soğuk İçecekler</h2><div class="cat-line"></div></div>
     <div class="category-body">
-      <div class="item"><div class="item-row"><span class="item-name">Su</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Coca Cola</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Cappy</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Monster Enerji</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Soda</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Sprite</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Fanta</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Red Bull Enerji</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Meyveli Soda</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Su</span><span class="item-dots"></span><span class="item-price">₺20</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Coca Cola</span><span class="item-dots"></span><span class="item-price">₺90</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Cappy</span><span class="item-dots"></span><span class="item-price">₺90</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Soda</span><span class="item-dots"></span><span class="item-price">₺50</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Sprite</span><span class="item-dots"></span><span class="item-price">₺50</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Fanta</span><span class="item-dots"></span><span class="item-price">₺50</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Red Bull Enerji</span><span class="item-dots"></span><span class="item-price">₺100</span></div></div>
+      <div class="item">
+        <div class="item-row"><span class="item-name">Meyveli Soda</span><span class="item-dots"></span><span class="item-price">₺50</span></div>
+        <div class="item-desc">Limon, Elma, Karpuz-Çilek</div>
+      </div>
       <div class="item"><div class="item-row"><span class="item-name">Dört Mevsim</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Ayran</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Limonata</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Fuse Tea</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Churchill</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
-      <div class="item"><div class="item-row"><span class="item-name">Buzlu Bardak</span><span class="item-dots"></span><span class="item-price">₺</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Ayran</span><span class="item-dots"></span><span class="item-price">₺60</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Limonata</span><span class="item-dots"></span><span class="item-price">₺120</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Fuse Tea</span><span class="item-dots"></span><span class="item-price">₺90</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Churchill</span><span class="item-dots"></span><span class="item-price">₺120</span></div></div>
+      <div class="item"><div class="item-row"><span class="item-name">Buzlu Bardak</span><span class="item-dots"></span><span class="item-price">₺20</span></div></div>
     </div>
   </div>
 
@@ -593,11 +451,11 @@
     <div class="category-header"><span class="emoji">🍦</span><h2>Dondurma</h2><div class="cat-line"></div></div>
     <div class="category-body">
       <div class="item">
-        <div class="item-row"><span class="item-name">Dondurma</span><span class="item-dots"></span><span class="item-price">₺</span></div>
+        <div class="item-row"><span class="item-name">Dondurma</span><span class="item-dots"></span><span class="item-price">₺60</span></div>
         <div class="item-desc">Sade, kakao, karamel, limon, vişne, karadut, mango, oreo, badem krokan, şirinler</div>
       </div>
       <div class="item">
-        <div class="item-row"><span class="item-name">Porsiyon Dondurma</span><span class="item-dots"></span><span class="item-price">₺</span></div>
+        <div class="item-row"><span class="item-name">Porsiyon Dondurma</span><span class="item-dots"></span><span class="item-price">₺240</span></div>
       </div>
     </div>
   </div>
