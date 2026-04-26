@@ -197,6 +197,9 @@
     font-weight: 700;
     color: #e8dcc8;
     letter-spacing: 0.6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
 
   .item-desc {
@@ -225,6 +228,19 @@
     min-width: 55px;
     text-align: right;
     letter-spacing: 1px;
+  }
+
+  .badge-new {
+    font-size: 10px;
+    font-weight: 700;
+    color: #7a5800;
+    background: #fff3b0;
+    border: 1px solid #d4af37;
+    border-radius: 4px;
+    padding: 2px 7px;
+    white-space: nowrap;
+    letter-spacing: 0.5px;
+    line-height: 1.5;
   }
 
   .footer { text-align: center; padding: 30px; }
@@ -347,14 +363,13 @@
     <div class="category-header"><span class="emoji">🍹</span><h2>Mocktails</h2><div class="cat-line"></div></div>
     <div class="category-body">
       <div class="item"><div class="item-row"><span class="item-name">Berry Hibiscus</span><span class="item-dots"></span><span class="item-price">₺180</span></div></div>
-<div class="item-row">
-  <span class="item-name" style="display: flex; align-items: center; gap: 8px;">ROM-A
-    <span style="font-size: 11px; font-weight: 500; color: #B8860B; background: #FFFBEA; border: 0.5px solid #F0C030; border-radius: 4px; padding: 2px 6px; white-space: nowrap;">Yeni Ürün!</span>
-  </span>
-  <span class="item-dots"></span>
-  <span class="item-price">₺180</span>
-</div>
-      
+      <div class="item">
+        <div class="item-row">
+          <span class="item-name">ROM-A <span class="badge-new">Yeni Ürün!</span></span>
+          <span class="item-dots"></span>
+          <span class="item-price">₺180</span>
+        </div>
+      </div>
       <div class="item"><div class="item-row"><span class="item-name">Cool Lime</span><span class="item-dots"></span><span class="item-price">₺180</span></div></div>
       <div class="item"><div class="item-row"><span class="item-name">Çilekli Limonata</span><span class="item-dots"></span><span class="item-price">₺150</span></div></div>
     </div>
